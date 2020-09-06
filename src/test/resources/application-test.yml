@@ -1,0 +1,12 @@
+server:
+  port: 9002
+
+spring:
+  application:
+    name: bucket4j-rate-limit-test-app
+  mvc:
+    throw-exception-if-no-handler-found: true
+  resources:
+    add-mappings: false
+
+env.rate.limit.acl.file.path: /test-rate-limit-list.yaml
