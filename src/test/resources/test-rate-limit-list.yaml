@@ -1,0 +1,18 @@
+---
+rateLimitFilters:
+  - url: "/api/v1/area/rectangle"
+    clientInformation:
+      - clientId: '1'
+        requestLimit: 3
+        unit: Minute
+      - clientId: '2'
+        requestLimit: 20
+        unit: Minute
+  - url: "/api/v1/area/triangle"
+    clientInformation:
+      - clientId: '1'
+        requestLimit: 1
+        unit: Minute
+      - clientId: '2'
+        requestLimit: 20
+        unit: Minute

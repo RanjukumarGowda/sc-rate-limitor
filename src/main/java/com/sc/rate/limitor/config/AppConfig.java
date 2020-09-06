@@ -4,6 +4,7 @@ import com.sc.rate.limitor.domain.dto.RateLimit;
 import com.sc.rate.limitor.domain.interceptor.RateLimitInterceptor;
 import com.sc.rate.limitor.domain.tokenbucket.ClientTokenBucketProvider;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Lazy;
@@ -13,6 +14,9 @@ import org.yaml.snakeyaml.Yaml;
 
 @Configuration
 public class AppConfig implements WebMvcConfigurer {
+
+    @Value("${env.rate.limit.acl.file.path:/rate-limit-list.yaml}")
+    private String rateLimitListFilePath;
 
     @Lazy
     @Autowired
@@ -26,7 +30,7 @@ public class AppConfig implements WebMvcConfigurer {
 
     @Bean
     public RateLimit rateLimit() {
-        return new Yaml().loadAs(getClass().getResourceAsStream("/rate-limit-list.yaml"), RateLimit.class);
+        return new Yaml().loadAs(getClass().getResourceAsStream(rateLimitListFilePath), RateLimit.class);
     }
 
     @Bean
