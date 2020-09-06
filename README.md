@@ -18,6 +18,9 @@ I have used Bucket4j to implement rate limit. below are detailed steps how it wo
 
 5. If client exceeds request quota, request will be rejected and number of seconds retry after will be responded in response header `X-Rate-Limit-Retry-After-Seconds`.  
 
+## Application parameters 
+1. `env.rate.limit.acl.file.path` : Rate limit ACL absolute file path if not provided defaulted into resources/rate-limit-list.yaml 
+
 ## Pre-requisite to run application 
 1. Java 11 should be installed.
 2. IDE : Intelli idea is preferred.
